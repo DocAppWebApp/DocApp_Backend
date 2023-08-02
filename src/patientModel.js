@@ -6,8 +6,17 @@ var userSchema = new Schema(
     username: {
       type: String,
       required: true,
+      unique: true,
     },
-    email: {
+    birthdate: {
+      type: Date,
+      required: true,
+    },
+    gender: {
+      type: String,
+      required: true,
+    },
+    healthcard: {
       type: String,
       required: true,
     },
@@ -16,7 +25,7 @@ var userSchema = new Schema(
       required: true,
     },
   },
-  { collection: "users" }
+  { collection: "patients" }
 );
 
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model("patients", patientSchema);
