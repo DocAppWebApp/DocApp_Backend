@@ -6,8 +6,7 @@ module.exports.savePhysicianInfoService = (physicianDetails) => {
   return new Promise(function savePhysicianInfoFun(resolve, reject) {
     var physicianModelData = new physicianModel();
     physicianModelData.physicianEmail = physicianDetails.physicianEmail;
-    physicianModelData.firstname = physicianDetails.firstname;
-    physicianModelData.lastname = physicianDetails.lastname;
+    physicianModelData.fullname = physicianDetails.fullname;
     var encryptedPassword = encryptor.encrypt(physicianDetails.password);
     physicianModelData.password = encryptedPassword;
     physicianModelData.status = physicianDetails.status;
