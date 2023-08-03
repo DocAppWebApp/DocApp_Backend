@@ -1,14 +1,20 @@
-var express = require('express');
-var userController = require('../src/patientController');
-var physicianController = require('../src/physicianController');
+var express = require("express");
+var patientController = require("../src/patientController");
+var physicianController = require("../src/physicianController");
 const router = express.Router();
 
-router.route('/user/save').post(userController.savePatientInfoController);
+router.route("/patient/save").post(patientController.savePatientInfoController);
 
-router.route('/user/login').post(userController.loginPatientInfoController);
+router
+  .route("/patient/login")
+  .post(patientController.loginPatientInfoController);
 
-router.post('/physician/save', physicianController.savePhysicianInfoController);
+router
+  .route("/physician/save")
+  .post(physicianController.savePhysicianInfoController);
 
-router.post('/physician/login', physicianController.loginPhysicianInfoController);
+router
+  .route("/physician/login")
+  .post(physicianController.loginPhysicianInfoController);
 
 module.exports = router;
