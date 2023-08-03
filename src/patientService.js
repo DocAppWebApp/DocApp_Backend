@@ -6,6 +6,7 @@ module.exports.savePatientInfoService = (patientDetails) => {
   return new Promise(function savePatientInfoFun(resolve, reject) {
     var patientModelData = new patientModel();
     patientModelData.username = patientDetails.username;
+    patientModelData.fullname = patientDetails.fullname;
     patientModelData.gender = patientDetails.gender;
     patientModelData.healthcard = patientDetails.healthcard; //Verify if this works? saving as date
     patientModelData.birthdate = patientDetails.birthdate;

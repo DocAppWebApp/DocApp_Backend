@@ -8,6 +8,10 @@ var patientSchema = new Schema(
       required: true,
       unique: true,
     },
+    fullname: {
+      type: String,
+      required: true,
+    },
     birthdate: {
       type: String,
       required: true,
