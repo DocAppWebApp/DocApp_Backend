@@ -9,7 +9,7 @@ var patientSchema = new Schema(
       unique: true,
     },
     birthdate: {
-      type: Date,
+      type: String,
       required: true,
     },
     gender: {
