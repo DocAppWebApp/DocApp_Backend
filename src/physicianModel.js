@@ -4,10 +4,10 @@ var Schema = mongoose.Schema;
 var physicianSchema = new Schema(
   {
     physicianEmail: {
-        type: String,
-        required: true,
-        unique: true
-      },
+      type: String,
+      required: true,
+      unique: true,
+    },
     fullname: {
       type: String,
       required: true,
@@ -18,12 +18,16 @@ var physicianSchema = new Schema(
     },
     status: {
       type: String,
-      default: 'pending'
+      default: "pending",
     },
     sin: {
-      type: Number,
+      type: String,
       required: true,
-    }
+    },
+    mln: {
+      type: String,
+      required: true,
+    },
   },
   { collection: "physicians" }
 );
