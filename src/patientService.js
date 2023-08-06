@@ -27,7 +27,7 @@ module.exports.savePatientInfoService = (patientDetails) => {
 module.exports.patientLoginService = (patientLoginDetails) => {
   return new Promise(function patientLoginFunctionality(resolve, reject) {
     patientModel.findOne(
-      { email: patientLoginDetails.username },
+      { email: patientLoginDetails.email },
       function getLoginResult(error, result) {
         if (error) {
           reject({ status: false, message: "Invalid Data" });

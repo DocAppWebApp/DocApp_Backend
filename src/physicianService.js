@@ -27,7 +27,7 @@ module.exports.savePhysicianInfoService = (physicianDetails) => {
 module.exports.physicianLoginService = (physicianLoginDetails) => {
   return new Promise(function physicianLoginFunctionality(resolve, reject) {
     physicianModel.findOne(
-      { physicianEmail: physicianLoginDetails.physicianEmail },
+      { physicianEmail: physicianLoginDetails.email },
       function getLoginResult(error, result) {
         if (error) {
           console.log("Error while logging in physician:", error); // new error logging
