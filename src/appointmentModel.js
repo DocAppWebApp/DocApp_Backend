@@ -3,11 +3,15 @@ var Schema = mongoose.Schema;
 
 var appointmentSchema = new Schema(
   {
-    date: {
+    _idDate: {
       type: String,
       required: true,
       unique: true,
     },
+    Date: {
+        type: String,
+        required: true,
+      },
     startTime: {
       type: String,
       required: true,
