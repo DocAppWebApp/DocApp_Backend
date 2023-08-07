@@ -5,7 +5,7 @@ var encryptor = require("simple-encryptor")(key);
 module.exports.savePhysicianInfoService = (physicianDetails) => {
   return new Promise(function savePhysicianInfoFun(resolve, reject) {
     var physicianModelData = new physicianModel();
-    physicianModelData.physicianEmail = physicianDetails.physicianEmail;
+    physicianModelData.email = physicianDetails.email;
     physicianModelData.fullname = physicianDetails.fullname;
     var encryptedPassword = encryptor.encrypt(physicianDetails.password);
     physicianModelData.password = encryptedPassword;
@@ -27,7 +27,7 @@ module.exports.savePhysicianInfoService = (physicianDetails) => {
 module.exports.physicianLoginService = (physicianLoginDetails) => {
   return new Promise(function physicianLoginFunctionality(resolve, reject) {
     physicianModel.findOne(
-      { physicianEmail: physicianLoginDetails.email },
+      { email: physicianLoginDetails.email },
       function getLoginResult(error, result) {
         if (error) {
           console.log("Error while logging in physician:", error); // new error logging

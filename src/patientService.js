@@ -5,7 +5,7 @@ var encryptor = require("simple-encryptor")(key);
 module.exports.savePatientInfoService = (patientDetails) => {
   return new Promise(function savePatientInfoFun(resolve, reject) {
     var patientModelData = new patientModel();
-    patientModelData.username = patientDetails.username;
+    patientModelData.email = patientDetails.email;
     patientModelData.fullname = patientDetails.fullname;
     patientModelData.gender = patientDetails.gender;
     patientModelData.healthcard = patientDetails.healthcard; //Verify if this works? saving as date
@@ -27,7 +27,7 @@ module.exports.savePatientInfoService = (patientDetails) => {
 module.exports.patientLoginService = (patientLoginDetails) => {
   return new Promise(function patientLoginFunctionality(resolve, reject) {
     patientModel.findOne(
-      { username: patientLoginDetails.email },
+      { email: patientLoginDetails.email },
       function getLoginResult(error, result) {
         if (error) {
           reject({ status: false, message: "Invalid Data" });

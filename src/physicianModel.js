@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var physicianSchema = new Schema(
   {
-    physicianEmail: {
+    email: {
       type: String,
       required: true,
       unique: true,
