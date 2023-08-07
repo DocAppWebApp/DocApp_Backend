@@ -34,7 +34,7 @@ module.exports.patientLoginService = (patientLoginDetails) => {
         } else {
           if (result != undefined && result != null) {
             var decryptedPassword = encryptor.decrypt(result.password);
-            if (decryptedPassword == userLoginDetails.password) {
+            if (decryptedPassword == patientLoginDetails.password) {
               resolve({
                 status: true,
                 message: "Patient validated Successfully",
