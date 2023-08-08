@@ -3,11 +3,19 @@ var Schema = mongoose.Schema;
 
 var appointmentSchema = new Schema(
   {
-    date: {
+    _idDate: {
       type: String,
       required: true,
       unique: true,
     },
+    physicianEmail: {
+        type: String,
+        required: true,
+    },
+    Date: {
+        type: String,
+        required: true,
+      },
     startTime: {
       type: String,
       required: true,
@@ -19,6 +27,9 @@ var appointmentSchema = new Schema(
     isBooked: {
       type: Boolean,
       default: false,
+    },
+    patientEmail: {
+        type: String,
     },
   },
   { collection: "appointments" }
