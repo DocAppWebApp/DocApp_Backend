@@ -26,14 +26,23 @@ router
 
 
 //Appointments
+
+// /save: save a single appointment with all the fields of the appointment
 router
   .route("/appointment/save")
   .post(appointmentController.saveAppointmentInfoController);
 
+// /saveday: save appointments from 9:00 to 17:00 30 min. block, it requires the _idDate from schedule, Date, physicianEmail.
 router
-  .route("/appointment/search")
+  .route("/appointment/saveday")
+  .post(appointmentController.saveAppointmentsDayInfoController);
+
+// / update: Will allow to edit the property isBooked and patientEmail to book and cancel appointments
+router
+  .route("/appointment/update")
   .post(appointmentController.UpdateAppointmentInfoController);
 
+//List all the appointments booked for an specific patient
 router
   .route("/appointment/list")
   .post(appointmentController.SearchAppointmentInfoController);

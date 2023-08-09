@@ -6,16 +6,15 @@ var appointmentSchema = new Schema(
     _idDate: {
       type: String,
       required: true,
-      unique: true,
     },
     physicianEmail: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     Date: {
-        type: String,
-        required: true,
-      },
+      type: String,
+      required: true,
+    },
     startTime: {
       type: String,
       required: true,
@@ -29,7 +28,7 @@ var appointmentSchema = new Schema(
       default: false,
     },
     patientEmail: {
-        type: String,
+      type: String,
     },
   },
   { collection: "appointments" }
