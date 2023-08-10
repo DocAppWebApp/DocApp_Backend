@@ -1,29 +1,30 @@
-var scheduleService = require('./scheduleService');
+var scheduleService = require("./scheduleService");
 
-var saveScheduleController = async (req, res) => {
-  try {
-    var status = await scheduleService.saveScheduleService(req.body);
-
-    if (status) {
-      res.send({ status: true, message: "Schedule saved Successfully." });
-    } else {
-      res.send({ status: false, message: "Error in saving Schedule." });
+var registerAvailabilityController = async (req, res) => {
+    try {
+        var status = await scheduleService.registerAvailability(req.body);
+        if (status) {
+            res.send({ status: true, message: "Availability registered Successfully." });
+        } else {
+            res.send({ status: false, message: "Error in registering Availability." });
+        }
+    } catch(error) {
+        console.log(error);
     }
-  } catch (error) {
-    console.log(error);
-    res.send({ status: false, message: error.message });
-  }
 };
 
-var getScheduleController = async (req, res) => {
-  try {
-    var schedules = await scheduleService.getScheduleService(req.params.physicianId);
-
-    res.send({ status: true, schedules: schedules });
-  } catch (error) {
-    console.log(error);
-    res.send({ status: false, message: error.message });
-  }
+var getAvailabilityController = async (req, res) => {
+    try {
+        var availability = await scheduleService.getAvailabilityByDateRange(req.query.physicianEmail, req.query.startDate, req.query.endDate);
+        if (availability) {
+            res.send({ status: true, availability });
+        } else {
+            res.send({ status: false, message: "Error in fetching Availability." });
+        }
+    } catch (error) {
+        console.log(error);
+        res.send({ status: false, message: error.message });
+    }
 };
 
-module.exports = { saveScheduleController, getScheduleController };
+module.exports = { registerAvailabilityController, getAvailabilityController };

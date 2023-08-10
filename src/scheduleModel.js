@@ -1,28 +1,23 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var scheduleSchema = new Schema(
-  {
-    physicianId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'physician',
-      required: true
-    },
-    patientId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'patients',
-      required: true
+var scheduleSchema = new Schema({
+    physicianEmail: {
+        type: String,
+        required: true,
     },
     date: {
-      type: Date,
-      required: true
+        type: String,
+        required: true,
     },
-    status: {
-      type: String,
-      default: "pending"
-    }
-  },
-  { collection: "schedules" }
-);
+    slots: [{
+        startTime: String,
+        endTime: String,
+        isBooked: {
+            type: Boolean,
+            default: false,
+        }
+    }]
+}, { collection: "schedules" });
 
-module.exports = mongoose.model("schedule", scheduleSchema);
+module.exports = mongoose.model("schedules", scheduleSchema);

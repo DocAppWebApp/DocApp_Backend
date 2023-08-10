@@ -1,13 +1,11 @@
 var scheduleModel = require("./scheduleModel");
 
-module.exports.saveScheduleService = (scheduleDetails) => {
-  return new Promise(function (resolve, reject) {
-    var scheduleModelData = new scheduleModel(scheduleDetails);
-
-    scheduleModelData.save(function (error, result) {
+module.exports.registerAvailability = (availabilityDetails) => {
+  return new Promise(function saveAvailabilityFunctionality(resolve, reject) {
+    var scheduleModelData = new scheduleModel(availabilityDetails);
+    scheduleModelData.save(function resultHandle(error) {
       if (error) {
-        console.log("Error while saving schedule:", error);
-        reject(error);
+        reject(false);
       } else {
         resolve(true);
       }
@@ -15,17 +13,9 @@ module.exports.saveScheduleService = (scheduleDetails) => {
   });
 };
 
-module.exports.getScheduleService = (physicianId) => {
-  return new Promise(function (resolve, reject) {
-    scheduleModel.find({ physicianId: physicianId })
-      .populate('patientId')
-      .exec(function (error, schedules) {
-        if (error) {
-          console.log("Error while retrieving schedules:", error);
-          reject(error);
-        } else {
-          resolve(schedules);
-        }
-      });
+module.exports.getAvailabilityByDateRange = async (physicianEmail, startDate, endDate) => {
+  return await scheduleModel.find({
+      physicianEmail,
+      date: { $gte: startDate, $lte: endDate },
   });
 };
