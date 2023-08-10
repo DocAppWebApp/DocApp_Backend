@@ -47,4 +47,14 @@ router
   .route("/appointment/list")
   .post(appointmentController.SearchAppointmentInfoController);
 
+//Schedules
+router
+  .route('/schedule/register')
+  .post(scheduleController.registerAvailabilityController);
+
+router
+  .route('/schedule/availability')
+  .get(scheduleController.getAvailabilityController);
+
+
 module.exports = router;
