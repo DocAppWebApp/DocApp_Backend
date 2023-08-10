@@ -31,7 +31,7 @@ var SearchAppointmentInfoController = async (req, res) => {
     res.send({ status: false, message: error.message });
   }
 };
-
+ 
 var saveAppointmentsDayInfoController = async (req, res) => {
   try {
     var status = await appointmentService.saveAppointmentBulkInfoService(

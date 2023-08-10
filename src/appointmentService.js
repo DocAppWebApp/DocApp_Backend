@@ -62,7 +62,7 @@ module.exports.saveAppointmentBulkInfoService = (appointmentsBulkDetails) => {
             totalInsertedDocuments++;
           }
         });
-      }
+      } 
     }
     console.log(appointmentList);
     if (resultFlag) {

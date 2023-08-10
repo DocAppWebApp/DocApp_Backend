@@ -31,7 +31,7 @@ router
 router
   .route("/appointment/save")
   .post(appointmentController.saveAppointmentInfoController);
-
+ 
 // /saveday: save appointments from 9:00 to 17:00 30 min. block, it requires the _idDate from schedule, Date, physicianEmail.
 router
   .route("/appointment/saveday")
