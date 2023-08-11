@@ -84,6 +84,7 @@ module.exports.appointmentUpdateDetailsService = (appointmentUpdateDetails) => {
     const update = {
       isBooked: appointmentUpdateDetails.isBooked,
       patientEmail: appointmentUpdateDetails.patientEmail,
+      physicianEmail: appointmentUpdateDetails.physicianEmail,
     };
     appointmentModel
       .updateOne({ _id: id }, update)
