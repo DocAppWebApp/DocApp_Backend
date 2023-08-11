@@ -62,7 +62,7 @@ module.exports.saveAppointmentBulkInfoService = (appointmentsBulkDetails) => {
             totalInsertedDocuments++;
           }
         });
-      } 
+      }
     }
     console.log(appointmentList);
     if (resultFlag) {
@@ -84,7 +84,6 @@ module.exports.appointmentUpdateDetailsService = (appointmentUpdateDetails) => {
     const update = {
       isBooked: appointmentUpdateDetails.isBooked,
       patientEmail: appointmentUpdateDetails.patientEmail,
-      physicianEmail: appointmentUpdateDetails.physicianEmail,
     };
     appointmentModel
       .updateOne({ _id: id }, update)
@@ -114,10 +113,27 @@ module.exports.appointmentUpdateDetailsService = (appointmentUpdateDetails) => {
 //List appointments by physician or by patient, or by date
 module.exports.appointmentSearchService = (appointmentPatientSearch) => {
   return new Promise(function appointmentSearchFunctionality(resolve, reject) {
-    const filter = {
-      patientEmail: appointmentPatientSearch.patientEmail,
-      isBooked: appointmentPatientSearch.isBooked,
-    };
+    console.log(appointmentPatientSearch);
+    var filter = {};
+    switch (appointmentPatientSearch.type) {
+      //Return list filtered by patient and isbooked: true/false
+      case 0:
+        filter = {
+          patientEmail: appointmentPatientSearch.patientEmail,
+          isBooked: appointmentPatientSearch.isBooked,
+        };
+        break;
+      //Return list filtered by physician and isbooked: false/true
+      case 1:
+        filter = {
+          isBooked: appointmentPatientSearch.isBooked,
+          physicianEmail: appointmentPatientSearch.physicianEmail,
+        };
+        break;
+      default:
+        break;
+    }
+
     appointmentModel.find(filter, (err, appointmentList) => {
       if (err) {
         reject({
