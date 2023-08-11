@@ -9,7 +9,6 @@ module.exports.saveAppointmentInfoService = (appointmentDetails) => {
     reject
   ) {
     var appointmentModelData = new appointmentModel();
-    appointmentModelData._idDate = appointmentDetails._idDate;
     appointmentModelData.physicianEmail = appointmentDetails.physicianEmail;
     appointmentModelData.Date = appointmentDetails.Date;
     appointmentModelData.startTime = appointmentDetails.startTime;
@@ -29,7 +28,6 @@ module.exports.saveAppointmentBulkInfoService = (appointmentsBulkDetails) => {
   return new Promise(function appointmentBulkCreate(resolve, reject) {
     var physicianEmail = appointmentsBulkDetails.physicianEmail;
     var Date = appointmentsBulkDetails.Date;
-    var _idDate = appointmentsBulkDetails._idDate;
     var appointmentList = [];
     var totalInsertedDocuments = 0;
     var currentAppointmentData;
@@ -37,7 +35,6 @@ module.exports.saveAppointmentBulkInfoService = (appointmentsBulkDetails) => {
     for (let i = 9; i < 17; i++) {
       for (let j = 0; j <= 1; j++) {
         currentAppointmentData = new appointmentModel();
-        currentAppointmentData._idDate = _idDate;
         currentAppointmentData.physicianEmail = physicianEmail;
         currentAppointmentData.Date = Date;
         currentAppointmentData.startTime =

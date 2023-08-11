@@ -3,10 +3,6 @@ var Schema = mongoose.Schema;
  
 var appointmentSchema = new Schema(
   {
-    _idDate: {
-      type: String,
-      required: true,
-    },
     physicianEmail: {
       type: String,
       required: true,
