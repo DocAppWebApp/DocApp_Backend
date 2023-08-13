@@ -38,17 +38,10 @@ module.exports.saveAppointmentBulkInfoService = (appointmentsBulkDetails) => {
         currentAppointmentData.physicianEmail = physicianEmail;
         currentAppointmentData.Date = Date;
         currentAppointmentData.startTime =
-          (i <= 12 ? i : i - 12) +
-          ":" +
-          (j == 0 ? "00" : "30") +
-          " " +
-          (i < 12 ? "AM" : "PM");
+          (i < 10 ? "0"+i : i) + ":" + (j == 0 ? "00" : "30");
         var end = i + j;
         currentAppointmentData.endTime =
-          (end <= 12 ? end : end - 12) +
-          ":" +
-          (j == 1 ? "00" : "30") +
-          (end < 12 ? "AM" : "PM");
+          (end <10 ? "0"+end : end) + ":" + (j == 1 ? "00" : "30");
         currentAppointmentData.isBooked = false;
         appointmentList.push(currentAppointmentData);
         currentAppointmentData.save(function resultHandle(error, result) {
