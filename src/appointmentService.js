@@ -120,6 +120,18 @@ module.exports.appointmentSearchService = (appointmentPatientSearch) => {
           physicianEmail: appointmentPatientSearch.physicianEmail,
         };
         break;
+      case 2:
+        filter = {
+          _id:appointmentPatientSearch._id,
+          patientEmail: appointmentPatientSearch.patientEmail,
+          isBooked: appointmentPatientSearch.isBooked,
+        };
+        break;
+        case 3:
+        filter = {
+          isBooked: false,
+        };
+        break;
       default:
         break;
     }

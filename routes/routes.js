@@ -14,6 +14,9 @@ router
   .route("/patient/login")
   .post(patientController.loginPatientInfoController);
 
+  router
+  .route("/patient/name")
+  .post(patientController.sendPatientInfoController);
 
 //Physicians
 router
@@ -23,6 +26,11 @@ router
 router
   .route("/physician/login")
   .post(physicianController.loginPhysicianInfoController);
+
+  router
+  .route("/physician/list")
+  .post(physicianController.listPhysicianInfoController);
+
 
 
 //Appointments

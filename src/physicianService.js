@@ -54,3 +54,20 @@ module.exports.physicianLoginService = (physicianLoginDetails) => {
     );
   });
 };
+
+module.exports.physicianListService = (physicianListDetails) => {
+  return new Promise(function physicianLoginFunctionality(resolve, reject) {
+    physicianModel.find(function getLoginResult(error, result) {
+        if (error) {
+          console.log("Error physician list:", error); // new error logging
+          reject({ status: false, message: error.message }); // send the error message
+        } else {
+          resolve({
+            status: true,
+            message: result,
+          });
+        }  
+      }
+    );
+  });
+};

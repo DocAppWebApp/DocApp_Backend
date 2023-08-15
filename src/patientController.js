@@ -30,4 +30,20 @@ var loginPatientInfoController = async (req, res) => {
   }
 };
 
-module.exports = { savePatientInfoController, loginPatientInfoController };
+var sendPatientInfoController = async (req, res) => {
+  var result = null;
+  try {
+    result = await patientService.patientShowInfoService(req.body);
+
+    if (result.status) {
+      res.send({ status: true, message: result.message });
+    } else {
+      res.send({ status: false, message: result.message });
+    }
+  } catch (error) {
+    console.log(error);
+    res.send({ status: false, message: error.message });
+  }
+};
+
+module.exports = { savePatientInfoController, loginPatientInfoController, sendPatientInfoController };

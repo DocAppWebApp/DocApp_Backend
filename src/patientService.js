@@ -50,3 +50,26 @@ module.exports.patientLoginService = (patientLoginDetails) => {
     );
   });
 };
+
+module.exports.patientShowInfoService = (patientDetail) => {
+  return new Promise(function patientLoginFunctionality(resolve, reject) {
+    patientModel.findOne(
+      { email: patientDetail.email },
+      function getinfoResult(error, result) {
+        console.log(result);
+        if (error) {
+          reject({ status: false, message: "Invalid user" });
+        } else {
+          if (result != undefined && result != null) {
+            resolve({
+              status: true,
+              message: result.fullname,
+            });
+          } else {
+            reject({ status: false, message: "Error in Patient Information" });
+          }
+        }
+      }
+    );
+  });
+};

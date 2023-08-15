@@ -30,4 +30,21 @@ var loginPhysicianInfoController = async(req, res) => {
     }
 }
 
-module.exports = { savePhysicianInfoController, loginPhysicianInfoController }
+
+var listPhysicianInfoController = async(req, res) => {
+    var result = null;
+    try{
+        result = await physicianService.physicianListService(req.body);
+
+        if(result.status){
+            res.send({"status": true, "message": result.message});
+        }else{
+            res.send({"status": false, "message": result.message});
+        }
+    }catch(error){
+        console.log(error);
+        res.send({"status":false, "message": error.message});
+    }
+}
+
+module.exports = { savePhysicianInfoController, loginPhysicianInfoController, listPhysicianInfoController }
